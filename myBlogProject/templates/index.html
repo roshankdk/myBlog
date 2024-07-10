@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+    <main>
+        <div class="content">
+            <div class="container">
+                <section class="articles">
+                    {% for post in posts %}
+                    <article>
+                        <div class="article-content">
+                            <a href="{% url 'post' post.pk %}"><h2>{{post.title}}</h2></a>
+                            <p class="author">By {{post.author}}</p>
+                            <p class="description">{{ post.body|slice:":200" }}...
+                            </p>
+                            <p class="meta">{{post.modified_at|date:"d M"}} • 2.9K views • 82 comments</p>
+                            <div class="actions">
+                                <button>Like</button>
+                                <button>Comment</button>
+                                <button>Bookmark</button>
+                            </div>
+                        </div>
+                        <div class="article-image">
+                            <img src="{{post.image1.url}}" alt="Article Image">
+                        </div>
+                    </article>
+                    {% endfor %}
+                </section>
+            </div>
+            <aside>
+                <section class="staff-picks">
+                    <h3>Staff Picks</h3>
+                    <ul>
+                        <li>Learning to Draw While Losing My Sight</li>
+                        <li>Stop Wasting Your Time</li>
+                        <li>Becoming a Poet</li>
+                        <!-- More picks -->
+                    </ul>
+                </section>
+                <section class="writing-promotion">
+                    <h3>Writing on My Blog</h3>
+                    <p>New writer FAQ, expert writing advice, grow your readership</p>
+                    <button>Start writing</button>
+                </section>
+                <section class="recommended-topics">
+                    <h3>Recommended Topics</h3>
+                    <div class="topics">
+                        <span>Lifestyle</span>
+                        <span>Deep Learning</span>
+                        <span>Marketing</span>
+                        <!-- More topics -->
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </main>
+{% endblock content %}

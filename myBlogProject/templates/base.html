@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <div class="logo-search">
+            <div class="logo"><a href="{% url 'index' %}">My Blog</a></div>
+            <input type="text" placeholder="Search..." class="search-box">
+        </div>
+        <nav>
+            <ul>
+                <li>For You</li>
+                <li>Following</li>
+                <li>Startup</li>
+                <li class="profile-icon">User</li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}{% endblock content %}
+    <footer>
+        <ul>
+            <li>About</li>
+            <li>Contact</li>
+            <li>Privacy Policy</li>
+            <!-- More links -->
+        </ul>
+    </footer>
+</body>
+
+</html>

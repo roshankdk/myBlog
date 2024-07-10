@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.logo-search {
+    display: flex;
+    align-items: center;
+}
+
+.search-box{
+    border: none;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    background-color: #eee;
+    padding: 5px 10px;
+    border-radius: 50%;
+}
+
+main {
+    display: flex;
+    padding: 20px;
+}
+
+.container{
+    width: 70%;
+}
+.content {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.articles {
+    flex: 3;  
+}
+
+article {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto auto;
+
+}
+
+.article-image {
+    max-width: 100%;  /* Ensures the container does not exceed its parent width */
+    overflow: hidden;  /* Ensures that the content does not overflow the container */
+    display: flex;
+    justify-content: center;  /* Center the image horizontally */
+}
+
+.article-image img {
+    max-width: 100%;  /* Ensures the image scales down to fit the container */
+    height: auto;  /* Maintains the aspect ratio of the image */
+    width: auto;  /* Maintains the aspect ratio when the image is smaller than the container */
+}
+
+article h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.article p {
+    margin: 10px 0;
+}
+
+.article-content a{
+    color: black;
+    text-decoration: none;
+}
+.article .meta {
+    font-size: 12px;
+    color: #888;
+}
+
+.article .actions button {
+    margin-right: 10px;
+}
+
+aside {
+    flex: 1;
+    margin-left: 20px;
+}
+
+aside section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding:
