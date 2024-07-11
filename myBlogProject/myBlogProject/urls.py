@@ -33,6 +33,9 @@ urlpatterns = [
     path('post/<int:pk>/',views.post_details,name='post'),
     path('admin/', admin.site.urls),
     path('signup/',views.signup,name='signup'),
+    path('login/',views.login,name='login'),
+    path('profile/',views.profile,name='profile'),
+
 ] 
 
 if settings.DEBUG:

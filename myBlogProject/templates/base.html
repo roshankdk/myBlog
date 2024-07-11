@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
 </head>
 
 <body>
@@ -19,8 +20,11 @@
             <ul>
                 <li>For You</li>
                 <li>Following</li>
-                <li>Startup</li>
-                <li class="profile-icon">User</li>
+                {% if user.is_authenticated %}
+                    <li class="profile-icon">{{user.username}}</li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li> 
+                {% endif %}
             </ul>
         </nav>
     </header>
@@ -34,5 +38,4 @@
         </ul>
     </footer>
 </body>
-
 </html>

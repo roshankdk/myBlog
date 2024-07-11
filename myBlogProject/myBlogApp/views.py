@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Post
-from .forms import singUpForm
+from .forms import SignupForm
+from django.shortcuts import redirect
+
 # Create your views here.
 
 def index(request):
@@ -18,8 +20,21 @@ def post_details(request, pk):
     return render(request,'post_details.html', context)
 
 def signup(request):
-    if request.method == 'POST':
-        form = signUpForm(request.POST)
+    if request.method == 'POST':        
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        else:
+            print("Validation failed!!")
+    else:
+        form = SignupForm()
+
+    return render(request,'signup.html',{'form':form})
 
 
-    return render(request,'signup.html')
+def profile(request):
+    return render(request,'profile.html')
+
+def login(request):
+    return render(request,'login.html')
