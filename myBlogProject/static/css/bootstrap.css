@@ -5044,7 +5044,7 @@ fieldset:disabled .btn {
 .card>.list-group:last-child {
     border-bottom-width: 0;
     border-bottom-right-radius: var(--bs-card-inner-border-radius);
-    border-bottom-left-radius: var(--bs-card-inner-border-radius)
+    border-bottom-left-radius: var(--bs-og-inner-border-radius)
 }
 
 .card>.card-header+.list-group,

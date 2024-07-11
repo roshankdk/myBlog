@@ -47,9 +47,9 @@ nav ul li {
 }
 
 .profile-icon {
-    background-color: #eee;
-    padding: 5px 10px;
     border-radius: 50%;
+    width: 35px;
+    height: 30px;
 }
 
 main {
@@ -103,7 +103,6 @@ article h2 {
 }
 
 a{
-    color: black;
     text-decoration: none;
 }
 .article .meta {    

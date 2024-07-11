@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" href="{% static '/css/style.css' %}">
     <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
                 <li>For You</li>
                 <li>Following</li>
                 {% if user.is_authenticated %}
-                    <li class="profile-icon">{{user.username}}</li>
+                    <li><a href="{% url 'profile' %}"><img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" alt="{{user.username}}" class="profile-icon"></a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li> 
                 {% endif %}
