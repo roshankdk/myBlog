@@ -1,10 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
-from .forms import SignupForm, LoginForm
+from .forms import SignupForm, LoginForm, PostForm
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from .models import Author
 
 # Create your views here.
 
@@ -56,3 +60,29 @@ def user_logout(request):
 
 def profile(request):
     return render(request,'profile.html')
+
+
+# creating the new post using class based view {new-story}
+class CreatePostView(LoginRequiredMixin,CreateView):
+    login_url = '/login/'
+    redirect_field_name = 'index.html'
+    form_class = PostForm
+    model = Post
+    template_name = 'newstory.html'
+    success_url = reverse_lazy('index')
+
+@login_required
+def newstory(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            author, created = Author.objects.get_or_create(user = request.user)
+            print(author)
+            post.author = author
+            form.save()
+            return redirect('index')
+    else:
+        form = PostForm()
+
+    return render(request,'newstory.html', {'form':form})

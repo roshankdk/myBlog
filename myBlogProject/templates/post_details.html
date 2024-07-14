@@ -1,26 +1,241 @@
-{% extends 'base.html' %}
-{% block content %}
-</header>
-<main>
-    <div class="container">
-        <div class="content">
-            <div class="articles">
-                <article>
-                    <div class="article-content">
-                        <h2>{{post.title}}</h2>
-                        <div class="meta">
-                            <span>by {{post.author}}</span> •
-                            <span>{{post.modified_at|date:"M d y"}}</span> •
-                            <span>6 min read</span>
-                        </div>
-                        <div class="article-image">
-                            <img src="{{post.image1.url}}" alt="Article Image">
-                        </div>
-                        <p>{{post.body}}</p>
-                    </div>
-                </article>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+</head>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.main {
+    padding: 20px 0;
+}
+
+.blog-post {
+    padding: 20px;
+}
+
+.member-story {
+    color: #ffcc00;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.blog-post h1 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #555555;
+    margin-bottom: 20px;
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.author-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.author-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-name {
+    font-weight: bold;
+}
+
+.author-follow {
+    color: #1a73e8;
+    cursor: pointer;
+}
+
+.publication-details {
+    display: flex;
+    gap: 10px;
+    color: #777777;
+}
+
+.article-image img {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+.article-content p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.interaction-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.interaction-info span {
+    color: #555555;
+}
+
+.interaction-icons {
+    display: flex;
+    gap: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    color: #777777;
+}
+
+
+/* nav and header */
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+}
+
+.logo-search {
+    display: flex;
+    align-items: center;
+}
+
+.search-box{
+    border: none;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+input[type="text"] {
+    padding: 5px;
+    font-size: 16px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.profile-icon {
+    border-radius: 50%;
+    width: 35px;
+    height: 30px;
+}
+
+
+</style>
+<body>
+    <header>
+        <div class="logo-search">
+            <div class="logo"><a href="{% url 'index' %}">My Blog</a></div>
+            <input type="text" placeholder="Search..." class="search-box">
         </div>
+        <nav>
+            <ul>
+                <li>For You</li>
+                <li>Following</li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}"><img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" alt="{{user.username}}" class="profile-icon"></a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li> 
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <main>
+            <article class="blog-post">
+                <div class="member-story">✨ Member-only story</div>
+                <h1>{{post.title}}</h1>
+                <p class="subtitle">Solving a Two-Dimensional Knapsack Problem with Mathematical Programming using Python and Gurobipy</p>
+                <div class="author-info">
+                    <img src="{{post.image1.url}}" alt="Author Image">
+                    <div class="author-details">
+                        <span class="author-name">{{post.author}} <span class="author-follow">Follow</span></span>
+                        <div class="publication-details">
+                            <span>Published in AI Advances</span>
+                            <span>· 18 min read</span>
+                            <span>·{{post.modified_at|date:"M d,Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-image">
+                    <img src="{{post.image1.url}}" alt="Article Image">
+                </div>
+                <div class="article-content">
+                    <p>{{post.body}}</p>
+                </div>
+                <div class="interaction-info">
+                    <span>103 👏</span>
+                    <div class="interaction-icons">
+                        <span>🔖</span>
+                        <span>💬</span>
+                        <span>🔗</span>
+                    </div>
+                </div>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2024 My Blog. All rights reserved.</p>
+        </footer>
     </div>
-</main>
-{% endblock content %}
+</body>
+</html>

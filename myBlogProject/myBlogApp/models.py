@@ -17,6 +17,7 @@ class Category(models.Model):
         return self.name
 
 class Author(models.Model):
+    user = models.OneToOneField('User',on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
     def __str__(self):
@@ -25,7 +26,7 @@ class Author(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=255)
     body = models.TextField()
-    image1 = models.ImageField(upload_to='uploads/')
+    image1 = models.ImageField(upload_to='uploads/', default='uploads/dummy_image.png')
     author = models.ForeignKey('Author',on_delete=models.CASCADE)   # one to many relation
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)

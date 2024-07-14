@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="" style="width: 50%; border: 1px solid rgba(100, 100, 100, 0.374); margin: 0 auto; padding: 10px;">
+    <h1>Write the New post</h1>
+
+    <form method="POST" action="{% url 'newstory' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Publish</button>
+    </form>
+</div>
+
+<script>var editor = new MediumEditor('.editable');</script>
+{% endblock %}
