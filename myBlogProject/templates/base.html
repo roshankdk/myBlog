@@ -1,3 +1,4 @@
+{% load static tailwind_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +13,7 @@
     <!-- link to stylesheet -->
     <link rel="stylesheet" href="{% static '/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
-
+	{% tailwind_css %}
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         </div>
         <nav>
             <ul>
-                <li><a href="{% url 'newstory' %}">Write</a></li>
+                <li><a href="{% url 'newstory' %}">k</a></li>
                 <li>Following</li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}"><img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" alt="{{user.username}}" class="profile-icon"></a></li>

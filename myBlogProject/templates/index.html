@@ -7,6 +7,7 @@
                     {% for post in posts %}
                     <article>
                         <div class="article-content">
+                            <p class="category">{{post.category}}</p>
                             <a href="{% url 'post' post.pk %}"><h2>{{post.title}}</h2></a>
                             <p class="author">By {{post.author}}</p>
                             <p class="description">{{ post.body|slice:":200" }}...
@@ -15,7 +16,6 @@
                             <div class="actions">
                                 <button>Like</button>
                                 <button>Comment</button>
-                                <button>Bookmark</button>
                             </div>
                         </div>
                         <div class="article-image">

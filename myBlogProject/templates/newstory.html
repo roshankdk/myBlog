@@ -10,6 +10,22 @@
         <button type="submit" class="btn btn-success">Publish</button>
     </form>
 </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const newCategoryInput = document.getElementById('id_new_category');
+        const categorySelect = document.getElementById('id_category');
+    
+        newCategoryInput.addEventListener('change', function() {
+            const newCategoryName = newCategoryInput.value.trim();
+            if (newCategoryName !== '') {
+                let newOption = document.createElement('option');
+                newOption.text = newCategoryName;
+                newOption.value = newCategoryName;
+                newOption.selected = true;
+                categorySelect.add(newOption);
+            }
+        });
+    });
+    </script>
 <script>var editor = new MediumEditor('.editable');</script>
 {% endblock %}

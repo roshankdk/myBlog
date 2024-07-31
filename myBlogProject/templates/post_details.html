@@ -230,8 +230,26 @@ nav ul li {
                         <span>💬</span>
                         <span>🔗</span>
                     </div>
+                    <div class="actions">
+                        <button>Like</button>
+                        <button><a href="{% url 'comment' post.pk %}">Comment</a></button>
+                    </div>
                 </div>
             </article>
+            <hr>
+            <!-- comment section -->
+            {% if comments %}
+                <section>
+                    <h3>Comment</h3>
+                    {% for comment in comments%}
+                        <h4>{{comment.author}}<h4>
+                        <p>{{comment.created_at}}</p>
+                        <div style="border: 1px solid black;padding: 10px;">
+                            {{comment.body}}
+                        </div>
+                    {% endfor %}
+                </section>
+            {% endif %}
         </main>
         <footer>
             <p>&copy; 2024 My Blog. All rights reserved.</p>

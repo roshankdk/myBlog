@@ -145,3 +145,12 @@ footer ul li {
 }
 
 
+/* category */
+.category{
+    border: none;
+    max-width: max-content;
+    background-color: rgb(19, 4, 120);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 12px;
+}
